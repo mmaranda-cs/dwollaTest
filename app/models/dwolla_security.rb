@@ -1,0 +1,2 @@
+class DwollaSecurity < ApplicationRecord
+end
