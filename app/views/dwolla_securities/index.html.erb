@@ -1,0 +1,5 @@
+<ul>
+  <% @dwolla_endpoints.each do |point| %>
+    <li><%= link_to point.target, dwolla_securities_path(point)  %></li>
+  <% end %>
+</ul>
