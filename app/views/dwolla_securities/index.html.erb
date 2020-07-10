@@ -1,5 +1,11 @@
 <ul>
   <% @dwolla_endpoints.each do |point| %>
-    <li><%= link_to point.target, dwolla_securities_path(point)  %></li>
+    <li><%= link_to point.target, dwolla_security_path(point)  %></li>
+  <% end %>
+</ul>
+
+<ul>
+  <% @customer_overview.each do |customer| %>
+    <li><%= "First Name: #{customer.firstName} Last Name: #{customer.lastName} e-mail: #{customer.email} type: #{customer.type} status: #{customer.status}" %></li>
   <% end %>
 </ul>
