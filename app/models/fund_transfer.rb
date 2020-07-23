@@ -1,0 +1,2 @@
+class FundTransfer < ApplicationRecord
+end

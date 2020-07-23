@@ -1,0 +1,9 @@
+<h3>Transfer Funds to a Merchant's Bank Account</h3>
+
+<%= form_for @fund_transfer do |tf| %>
+  <p>Ammount $: <%= tf.text_field :transfer_total, placeholder: "50.00" %></p>
+  <p>Target Account ID <%= tf.text_field :target_account_id, value: @account_id %></p>
+  <p>Source Account ID <%= tf.text_field :source_account_id, value: @funding_source_account %></p>
+
+  <%= tf.submit %>
+<% end %>

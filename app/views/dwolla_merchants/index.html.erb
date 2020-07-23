@@ -1,0 +1,14 @@
+<%= button_to "New dwolla_merchant", new_dwolla_merchant_path(), method: :get %>
+
+<% @customer_overview.each do |customer| %>
+  <ul>
+<!--    <li> <%#= button_to "Edit dwolla_merchant", edit_dwolla_merchant_path(customer.id), method: :get %> </li>-->
+    <li> <%= button_to "New bank account", new_merchant_account_path(), method: :get %> </li>
+    <li><%= "First Name: #{customer.firstName}"  %></li>
+    <li><%= "Last Name: #{customer.lastName}"  %></li>
+    <li><%= "e-mail: #{customer.email}"  %></li>
+    <li><%= "type: #{customer.type}"  %></li>
+    <li><%= "status: #{customer.status}" %></li>
+    <li>"dwolla_id:" <%=  link_to customer.id, dwolla_merchant_path(customer.id)  %></li>
+  </ul>
+<% end %>

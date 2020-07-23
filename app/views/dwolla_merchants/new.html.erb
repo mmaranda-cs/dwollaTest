@@ -1,0 +1,11 @@
+
+<h3>Create a Merchant</h3>
+<%= form_for @dwolla_merchant do |f| %>
+  <p>Firt Name: <%= f.text_field :first_name, placeholder: "Jane" %></p>
+  <p>Last Name: <%= f.text_field :last_name, placeholder: "Merchant" %></p>
+  <p>Email: <%= f.text_field :email, placeholder: "foo@bar.baz" %></p>
+<!--  <p><%#= "type: #{customer.type}"  %></p>-->
+<!--  <p><%#= "status: #{customer.status}" %></p>-->
+
+  <%= f.submit %>
+<% end %>

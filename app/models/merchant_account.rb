@@ -1,0 +1,2 @@
+class MerchantAccount < ApplicationRecord
+end

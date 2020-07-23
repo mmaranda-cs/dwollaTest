@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  routing_number: MyString
+  account_number: MyString
+  bank_account_type: MyString
+  name_for_account: MyString
+  dwolla_merchant_id: MyString
+
+two:
+  routing_number: MyString
+  account_number: MyString
+  bank_account_type: MyString
+  name_for_account: MyString
+  dwolla_merchant_id: MyString

@@ -1,0 +1,12 @@
+
+<h3>Create a Merchant's Bank Account</h3>
+<%= form_for @merchant_account do |ma| %>
+<p>Routing #: <%= ma.text_field :routing_number, placeholder: "222222226" %></p>
+<p>Account #: <%= ma.text_field :account_number, placeholder: "123456789" %></p>
+<p>Merchant Id: <%= ma.text_field :dwolla_merchant_id, value: @dwolla_merchant_id %></p>
+<p>Name for Account: <%= ma.text_field :name_for_account, placeholder: "NAME" %></p>
+<!--  <p><%#= "type: #{customer.type}"  %></p>-->
+<!--  <p><%#= "status: #{customer.status}" %></p>-->
+
+  <%= ma.submit %>
+<% end %>

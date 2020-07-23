@@ -1,0 +1,37 @@
+<p>Merchant</p>
+<ul>
+  <li><%= "First Name: #{@customer.firstName} " %></li>
+  <li><%= "Last Name: #{@customer.lastName} " %></li>
+  <li><%= "e-mail: #{@customer.email} " %></li>
+  <li><%= "type: #{@customer.type} " %></li>
+  <li><%= "status: #{@customer.status}" %></li>
+</ul>
+<p>Accounts</p>
+<%= button_to "New bank account", new_merchant_account_path(@customer.id), method: :get %>
+<p>&nbsp;</p>
+<% @customer_funding_sources.each do |fsource| %>
+  <ul>
+<!--    <li> <%#= fsource %> </li>-->
+<!--    <li> <%#= button_to "Edit account", edit_merchant_account_path(fsource.id, @customer.id), method: :get %> </li>-->
+    <li> <%= button_to "Transfer Funds to account", new_fund_transfer_path(fsource.id), method: :get %> </li>
+<!--    <li> <%#= fsource  %> </li>-->
+    <li> Bank Name: <%= fsource.bankName  %></li>
+    <li> Source Type: <%= fsource.type  %></li>
+    <li> Account Type: <%= fsource.bankAccountType  %></li>
+    <li> Customer Set Name: <%= fsource.name  %> </li>
+    <li> Status: <%= fsource.status  %> </li>
+  </ul>
+<% end %>
+
+<p> All Transfers for Customers </p>
+<% @transfers.each do |t| %>
+  <ul>
+    <li> Transfer Id <%= t.id %> </li>
+    <li> Status <%= t.status %> </li>
+    <li> Amount <%= t.amount.value %> &nbsp; <%= t.amount.currency %> </li>
+
+    <li> Source <%= t._links['source-funding-source'].href %> </li>
+    <li> Target <%= t._links['destination'] %> </li>
+
+  </ul>
+<% end %>

@@ -1,0 +1,3 @@
+class DwollaMerchant < ApplicationRecord
+  
+end

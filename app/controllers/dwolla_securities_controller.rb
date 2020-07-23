@@ -3,20 +3,8 @@ class DwollaSecuritiesController < ApplicationController
   require 'dwolla_v2'
 
   def index
-    @dwolla_endpoints = DwollaSecurity.all
-
-    first_endpoint = DwollaSecurity.first
-    app_key = first_endpoint.key
-    app_secret = first_endpoint.secret
-
-    $dwolla = DwollaV2::Client.new(key: first_endpoint.key, secret: first_endpoint.secret) do |config|
-      if first_endpoint.target.include? "sandbox"
-        config.environment = :sandbox # optional - defaults to production
-      end
-    end
-
     # create an application token
-    @app_token = $dwolla.auths.client
+    @app_token = create_app_Token
 
     cusomter_randomizer = rand(100000000000)
 
@@ -37,6 +25,11 @@ class DwollaSecuritiesController < ApplicationController
     customers = @app_token.get "customers", limit: 30
     @customer_overview = customers._embedded['customers']
 
+    root = @app_token.get "/"
+    account_url = root._links.account.href
+
+    funding_sources = @app_token.get "#{account_url}/funding-sources"
+    @sandbox_accounts = funding_sources._embedded['funding-sources']
 
   end
 
@@ -61,5 +54,16 @@ class DwollaSecuritiesController < ApplicationController
     params.permit(:merchant_id, :merchant_first_name, :merchant_last_name, :merchant_email, :account_routing_number, :account_number, :bank_account_type, :name_for_account, :transfer_ammount, :transfer_source)
   end
 
+  def create_app_Token
+    first_endpoint = DwollaSecurity.first
+    $dwolla = DwollaV2::Client.new(key: first_endpoint.key, secret: first_endpoint.secret) do |config|
+      if first_endpoint.target.include? "sandbox"
+        config.environment = :sandbox # optional - defaults to production
+      end
+    end
+
+    # create an application token
+    $dwolla.auths.client
+  end
 
 end

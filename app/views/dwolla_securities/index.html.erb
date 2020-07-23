@@ -1,11 +1,19 @@
+<p>Service Account (.i.e. Evoucher Manager)</p>
 <ul>
-  <% @dwolla_endpoints.each do |point| %>
-    <li><%= link_to point.target, dwolla_security_path(point)  %></li>
+  <% @sandbox_accounts.each do |account| %>
+    <li><%= "Name: #{account.name} " %> </li>
+<!--    <li><%#= "bankAccountType: #{account.bankAccountType} " %> </li>-->
+    <li><%= "type: #{account.type} " %> </li>
+    <li><%= "status: #{account.status} " %> </li>
+    <li><%= "id: #{account.id} " %> </li>
   <% end %>
 </ul>
 
 <ul>
   <% @customer_overview.each do |customer| %>
-    <li><%= "First Name: #{customer.firstName} Last Name: #{customer.lastName} e-mail: #{customer.email} type: #{customer.type} status: #{customer.status}" %></li>
+    <li><%= "First Name: #{customer.firstName} Last Name: #{customer.lastName} e-mail: #{customer.email} type: #{customer.type} status: #{customer.status}" %> <%=  link_to customer.id, dwolla_merchant_path(customer.id) %> </li>
   <% end %>
 </ul>
+
+
+<%= @sandbox_accounts %>
